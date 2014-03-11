@@ -13,7 +13,7 @@ CREATE TABLE Crate (
 
 CREATE TABLE Animal (
 	animalID int PRIMARY KEY IDENTITY(1,1),
-	rfid int,
+	rfid varchar(30),
 	crateNo int UNIQUE FOREIGN KEY REFERENCES Crate(crateNo),
 	vetPriority int,
 	adoptionAvailability varchar(10),
