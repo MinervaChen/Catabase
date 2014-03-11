@@ -84,13 +84,13 @@ CHECK (len(phone) >= 10);
 
 Create Table FosterFamily
 (
-FosterFamID int NOT NULL IDENTITY (1, 1),
-lName varchar(50),
-fName varchar(50),
-phone varchar(12),
-address varChar(100),
-email varchar(50), 
-PRIMARY KEY (FosterFamID)
+	FosterFamID int NOT NULL IDENTITY (1, 1),
+	lName varchar(50),
+	fName varchar(50),
+	phone varchar(12),
+	address varChar(100),
+	email varchar(50), 
+	PRIMARY KEY (FosterFamID)
 );
 
 ALTER TABLE FosterFamily
@@ -100,15 +100,15 @@ CHECK(LEN(phone) >= 10);
 
 Create Table Client
 (
-clientID int NOT NULL IDENTITY (1, 1),
-lName varchar(50),
-fName varchar(50),
-phone varchar(12),
-address varChar(100),
-email varchar(50),
-status varchar(50),
-notes varchar(200),  
-PRIMARY KEY (clientID)
+	clientID int NOT NULL IDENTITY (1, 1),
+	lName varchar(50),
+	fName varchar(50),
+	phone varchar(12),
+	address varChar(100),
+	email varchar(50),
+	status varchar(50),
+	notes varchar(200),  
+	PRIMARY KEY (clientID)
 );
 
 ALTER TABLE Client
