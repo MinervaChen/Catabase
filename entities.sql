@@ -58,7 +58,7 @@ CHECK (manager IN('Y', 'N'));
 
 ALTER TABLE Staff
 ADD CONSTRAINT chk_position
-CHECK (position IN('Volunteer', 'Employee'));
+CHECK ((position IN('Volunteer', 'Employee') AND manager = 'N') OR (position = null AND manager = 'Y'));
 
 ALTER TABLE Staff
 ADD CONSTRAINT chk_phone
