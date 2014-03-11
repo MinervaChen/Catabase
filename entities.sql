@@ -33,7 +33,30 @@ CREATE TABLE Animal (
 	Check on sex = M or F
 */
 
-/* STAFF GOES HERE */
+Create Table Staff(
+staffID int NOT NULL IDENTITY(1, 1),
+manager varchar(3),
+lName varchar(50),
+fName varchar(50),
+position varchar(30),
+address varchar(100),
+phone varchar(12),
+email varchar(100)
+PRIMARY KEY(staffID)
+);
+
+ALTER TABLE Staff
+ADD CONSTRAINT y_n
+CHECK (manager IN('y', 'n'));
+
+ALTER TABLE Staff
+ADD CONSTRAINT position_c
+CHECK (position IN('Manager', 'Volunteer', 'Employee'));
+
+ALTER TABLE Staff
+ADD CONSTRAINT phone_Snum
+CHECK(LEN(phone) >= 10);
+
 
 CREATE TABLE Veterinarian (
 	vetID int PRIMARY KEY IDENTITY(1,1),
@@ -51,9 +74,41 @@ ALTER TABLE Veterinarian
 ADD CONSTRAINT phone_len
 CHECK (len(phone) > 9);
 
-/* FOSTER FAMILY GOES HERE */
+Create Table FosterFamily
+(
+FosterFamID int NOT NULL IDENTITY (1, 1),
+lName varchar(50),
+fName varchar(50),
+phone varchar(12),
+[address] varChar(100),
+email varchar(50), 
+PRIMARY KEY (FosterFamID)
+);
 
-/* CLIENT GOES HERE */
+ALTER TABLE FosterFamily
+ADD CONSTRAINT phone_Fnum
+CHECK(LEN(phone) = 12 AND LEN(phone) >= 10);
+
+Create Table Client
+(
+clientID int NOT NULL IDENTITY (1, 1),
+lName varchar(50),
+fName varchar(50),
+phone varchar(12),
+[address] varChar(100),
+email varchar(50),
+[status] varchar(50),
+notes varchar(200),  
+PRIMARY KEY (clientID)
+);
+
+ALTER TABLE Client
+ADD CONSTRAINT phone_num
+CHECK(LEN(phone) >= 10);
+
+ALTER TABLE Client
+ADD CONSTRAINT status_c
+CHECK(status IN('Looking', 'Found'));
 
 CREATE TABLE VetRecord
 (
