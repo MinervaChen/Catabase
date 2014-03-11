@@ -39,3 +39,20 @@ insert into Veterinarian (lName, fName, address, city, state, zip, phone, email)
 insert into Veterinarian (lName, fName, address, city, state, zip, phone, email) values ('Richards', 'Brenda', '59 Almo Parkway', 'Anaheim', 'Vermont', 54293, 2226663615, 'brichards@feedfire.org');
 insert into Veterinarian (lName, fName, address, city, state, zip, phone, email) values ('Myers', 'Ann', '52336 Thierer Lane', 'Half Moon Bay', 'Illinois', 38842, 9161639328, 'amyers@nlounge.com');
 */
+
+/*
+insert into FosterFamily (lName, fName, phone, address, email) values ('Fowler', 'Howard', 9381053828, '200 Muir Pass', 'hfowler@thoughtstorm.org');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Williams', 'Steven', 95762610020, '59617 Maple Wood Center', 'swilliams@twinder.edu');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Wagner', 'Carol', 60755192988, '16238 Lotheville Court', 'cwagner@twitterbridge.biz');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Romero', 'Joan', 75437831520, '03 Gina Road', 'jromero@wikizz.org');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Gray', 'Patrick', 89765526800, '2 Mitchell Lane', 'pgray@edgepulse.org');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Austin', 'Shirley', 97162147138, '6481 Pearson Terrace', 'saustin@realcube.info');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Fowler', 'Kenneth', 06343966704, '50 Loftsgordon Pass', 'kfowler@brainverse.org');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Gonzalez', 'Pamela', 47262509013, '3527 Harper Trail', 'pgonzalez@twitterbridge.biz');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Butler', 'Jeremy', 72940287279, '10113 South Lane', 'jbutler@quaxo.edu');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Patterson', 'Aaron', 71169042318, '25 Washington Pass', 'apatterson@realcube.info');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Hall', 'Frances', 20488807019, '62 Warner Lane', 'fhall@skynoodle.edu');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Taylor', 'Judy', 1463566056, '352 Village Way', 'jtaylor@babbleblab.mil');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Duncan', 'Arthur', 5888364451, '4752 Calypso Pass', 'aduncan@centidel.mil');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Martin', 'Tina', 99708458127, '70868 Bultman Alley', 'tmartin@cogibox.name');
+insert into FosterFamily (lName, fName, phone, address, email) values ('Mills', 'Chris', 9401064414, '2297 Red Cloud Hill', 'cmills@kazio.name');*/
