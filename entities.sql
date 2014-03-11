@@ -3,8 +3,8 @@ CREATE DATABASE Catabase;
 USE Catabase;
 
 CREATE TABLE Crate (
-	crateNo int PRIMARY KEY IDENTITY(1,1),
-	roomNo int NOT NULL
+	crateNo INT PRIMARY KEY IDENTITY(1,1),
+	roomNo INT NOT NULL
 );
 
 /* NEED:
@@ -12,19 +12,19 @@ CREATE TABLE Crate (
 */
 
 CREATE TABLE Animal (
-	animalID int PRIMARY KEY IDENTITY(1,1),
-	rfid varchar(30),
-	crateNo int UNIQUE FOREIGN KEY REFERENCES Crate(crateNo),
-	vetPriority int,
-	adoptionAvailability varchar(10),
-	type varchar(30),
-	name varchar(50),
-	dob date,
+	animalID INT PRIMARY KEY IDENTITY(1,1),
+	rfid VARCHAR(30),
+	crateNo INT UNIQUE FOREIGN KEY REFERENCES Crate(crateNo),
+	vetPriority INT,
+	adoptionAvailability VARCHAR(10),
+	type VARCHAR(30),
+	name VARCHAR(50),
+	dob DATE,
 	sex char(1),
-	weight float,
-	diseases varchar(50),
-	allergies varchar(50),
-	notes varchar(200)
+	weight DECIMAL (4, 2),
+	diseases VARCHAR(50),
+	allergies VARCHAR(50),
+	notes VARCHAR(200)
 );
 
 ALTER TABLE Animal
@@ -41,14 +41,14 @@ CHECK (sex IN ('M','F'));
 
 
 Create Table Staff(
-	staffID int NOT NULL IDENTITY(1, 1),
-	manager varchar(3),
-	lName varchar(50),
-	fName varchar(50),
-	position varchar(30),
-	address varchar(100),
-	phone varchar(12),
-	email varchar(100)
+	staffID INT PRIMARY KEY IDENTITY(1, 1),
+	manager CHAR(1),
+	lName VARCHAR(50),
+	fName VARCHAR(50),
+	position VARCHAR(30),
+	address VARCHAR(100),
+	phone VARCHAR(12),
+	email VARCHAR(30)
 	PRIMARY KEY(staffID)
 );
 
@@ -66,15 +66,15 @@ CHECK(LEN(phone) >= 10);
 
 
 CREATE TABLE Veterinarian (
-	vetID int PRIMARY KEY IDENTITY(1,1),
-	lName varchar(30),
-	fName varchar(30),
-	address varchar(50),
-	city varchar(30),
-	state varchar(30),
-	zip int,
-	phone varchar(12),
-	email varchar(30)
+	vetID INT PRIMARY KEY IDENTITY(1,1),
+	lName VARCHAR(30),
+	fName VARCHAR(30),
+	address VARCHAR(100),
+	city VARCHAR(30),
+	state VARCHAR(30),
+	zip INT,
+	phone VARCHAR(12),
+	email VARCHAR(30)
 );
 
 ALTER TABLE Veterinarian
@@ -84,12 +84,12 @@ CHECK (len(phone) >= 10);
 
 Create Table FosterFamily
 (
-	FosterFamID int NOT NULL IDENTITY (1, 1),
-	lName varchar(50),
-	fName varchar(50),
-	phone varchar(12),
-	address varChar(100),
-	email varchar(50), 
+	FosterFamID INT PRIMARY KEY IDENTITY (1, 1),
+	lName VARCHAR(50),
+	fName VARCHAR(50),
+	phone VARCHAR(12),
+	address VARCHAR(100),
+	email VARCHAR(30), 
 	PRIMARY KEY (FosterFamID)
 );
 
@@ -100,14 +100,14 @@ CHECK(LEN(phone) >= 10);
 
 Create Table Client
 (
-	clientID int NOT NULL IDENTITY (1, 1),
-	lName varchar(50),
-	fName varchar(50),
-	phone varchar(12),
-	address varChar(100),
-	email varchar(50),
-	status varchar(50),
-	notes varchar(200),  
+	clientID INT PRIMARY KEY IDENTITY (1, 1),
+	lName VARCHAR(50),
+	fName VARCHAR(50),
+	phone VARCHAR(12),
+	address VARCHAR(100),
+	email VARCHAR(50),
+	status VARCHAR(50),
+	notes VARCHAR(200),  
 	PRIMARY KEY (clientID)
 );
 
@@ -127,7 +127,7 @@ CREATE TABLE VetRecord
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	medProcedure VARCHAR(200) NOT NULL,
 	diagnosis VARCHAR(200),
-	medRecDate DATE NOT NULL,
+	medRecDATE DATE NOT NULL,
 	vetNotes VARCHAR(400)
 );
 
@@ -137,9 +137,9 @@ CREATE TABLE GeneralCareRecord
 	genCareRecID INT PRIMARY KEY IDENTITY(1,1),
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
-	genRecDate DATE NOT NULL,
+	genRecDATE DATE NOT NULL,
 	healthCond INT NOT NULL FOREIGN KEY REFERENCES HealthCondition(healthCondID),
-	animalWeight DECIMAL (5, 2),
+	animalWeight DECIMAL (4, 2),
 	generalNotes VARCHAR(400)
 );
 
@@ -158,14 +158,14 @@ CREATE TABLE FosterRecord
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
 	FosterFamID INT NOT NULL FOREIGN KEY REFERENCES FosterFamily(FosterFamID),
-	inDate DATE NOT NULL,
-	outDate DATE NOT NULL,
+	inDATE DATE NOT NULL,
+	outDATE DATE NOT NULL,
 	fosterNotes VARCHAR(400)
 );
 
 ALTER TABLE Animal
-ADD CONSTRAINT chk_dates
-CHECK (inDate <= outDate);
+ADD CONSTRAINT chk_DATEs
+CHECK (inDATE <= outDATE);
 
 
 CREATE TABLE AdoptionRecord
@@ -174,19 +174,19 @@ CREATE TABLE AdoptionRecord
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	clientID INT NOT NULL FOREIGN KEY REFERENCES Client(clientID),
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
-	adoptDate DATE NOT NULL,
+	adoptDATE DATE NOT NULL,
 	adoptNotes VARCHAR(400)
 );
 
 
-CREATE TABLE IntakeRecord
+CREATE TABLE INTakeRecord
 (
-	intakeRecID INT PRIMARY KEY IDENTITY(1,1),
+	INTakeRecID INT PRIMARY KEY IDENTITY(1,1),
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
 	crateNo INT NOT NULL FOREIGN KEY REFERENCES Crate(crateNo),
-	intakeDate DATE NOT NULL,
-	intakeNotes VARCHAR(400)
+	INTakeDATE DATE NOT NULL,
+	INTakeNotes VARCHAR(400)
 );
 
 
@@ -196,7 +196,7 @@ CREATE TABLE ReturnRecord
 	animalID INT NOT NULL FOREIGN KEY REFERENCES Animal(animalID),
 	clientID INT NOT NULL FOREIGN KEY REFERENCES Client(clientID),
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
-	returnDate DATE NOT NULL,
+	returnDATE DATE NOT NULL,
 	returnNotes VARCHAR(400) NOT NULL
 );
 
