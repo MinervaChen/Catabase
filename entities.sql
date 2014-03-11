@@ -21,7 +21,7 @@ CREATE TABLE Animal (
 	name VARCHAR(50),
 	dob DATE,
 	sex char(1),
-	weight DECIMAL (4, 2),
+	weight DECIMAL(4, 2),
 	diseases VARCHAR(50),
 	allergies VARCHAR(50),
 	notes VARCHAR(200)
@@ -139,7 +139,7 @@ CREATE TABLE GeneralCareRecord
 	staffID INT NOT NULL FOREIGN KEY REFERENCES Staff(staffID),
 	genRecDATE DATE NOT NULL,
 	healthCond INT NOT NULL FOREIGN KEY REFERENCES HealthCondition(healthCondID),
-	animalWeight DECIMAL (4, 2),
+	animalWeight DECIMAL(4, 2),
 	generalNotes VARCHAR(400)
 );
 
