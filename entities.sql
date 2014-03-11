@@ -1,5 +1,3 @@
-CREATE DATABASE Catabase;
-
 USE Catabase;
 
 CREATE TABLE Crate (
@@ -27,13 +25,21 @@ CREATE TABLE Animal (
 	notes varchar(200)
 );
 
-/* NEED:
-	Check on adoptionAviliability = Availible or Adopted
-	Check on type = Cat, Dog, Bird, etc
-	Check on sex = M or F
-*/
+ALTER TABLE Animal
+ADD CONSTRAINT chk_adoptionAvailability
+CHECK (adoptionAvailability IN ('Available','Adopted'));
+
+ALTER TABLE Animal
+ADD CONSTRAINT chk_type
+CHECK (type IN ('Cat','Dog','Bird'));
+
+ALTER TABLE Animal
+ADD CONSTRAINT chk_sex
+CHECK (sex IN ('M','F'));
+
 
 /* STAFF GOES HERE */
+
 
 CREATE TABLE Veterinarian (
 	vetID int PRIMARY KEY IDENTITY(1,1),
@@ -48,12 +54,15 @@ CREATE TABLE Veterinarian (
 );
 
 ALTER TABLE Veterinarian
-ADD CONSTRAINT phone_len
+ADD CONSTRAINT chk_phone
 CHECK (len(phone) > 9);
+
 
 /* FOSTER FAMILY GOES HERE */
 
+
 /* CLIENT GOES HERE */
+
 
 CREATE TABLE VetRecord
 (
@@ -79,11 +88,12 @@ CREATE TABLE GeneralCareRecord
 );
 
 ALTER TABLE GeneralCareRecord
-ADD CONSTRAINT chk_Weight CHECK (animWeight>0.00 AND animWeight<=200.00);
+ADD CONSTRAINT chk_animalWeight 
+CHECK (animalWeight>0.00 AND animalWeight<=200.00);
 
-/* NEED:
-	Check healthCond in Healthy, Ill, Pregnant, Dead, etc.
-*/
+ALTER TABLE Animal
+ADD CONSTRAINT chk_healthCond
+CHECK (healthCond IN ('Healthy','Pregnant','Ill','Terminal','Decesased'));
 
 
 CREATE TABLE FosterRecord
@@ -97,9 +107,9 @@ CREATE TABLE FosterRecord
 	fosterNotes VARCHAR(400)
 );
 
-/* NEED: 
-	Check inDate < outDate
-*/
+ALTER TABLE Animal
+ADD CONSTRAINT chk_dates
+CHECK (inDate <= outDate);
 
 
 CREATE TABLE AdoptionRecord
