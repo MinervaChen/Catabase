@@ -1,3 +1,5 @@
+CREATE DATABASE Catabase;
+
 USE Catabase;
 
 CREATE TABLE Crate (
@@ -38,7 +40,29 @@ ADD CONSTRAINT chk_sex
 CHECK (sex IN ('M','F'));
 
 
-/* STAFF GOES HERE */
+Create Table Staff(
+	staffID int NOT NULL IDENTITY(1, 1),
+	manager varchar(3),
+	lName varchar(50),
+	fName varchar(50),
+	position varchar(30),
+	address varchar(100),
+	phone varchar(12),
+	email varchar(100)
+	PRIMARY KEY(staffID)
+);
+
+ALTER TABLE Staff
+ADD CONSTRAINT chk_manager
+CHECK (manager IN('Y', 'N'));
+
+ALTER TABLE Staff
+ADD CONSTRAINT chk_position
+CHECK (position IN('Volunteer', 'Employee'));
+
+ALTER TABLE Staff
+ADD CONSTRAINT chk_phone
+CHECK(LEN(phone) >= 10);
 
 
 CREATE TABLE Veterinarian (
@@ -55,13 +79,45 @@ CREATE TABLE Veterinarian (
 
 ALTER TABLE Veterinarian
 ADD CONSTRAINT chk_phone
-CHECK (len(phone) > 9);
+CHECK (len(phone) >= 10);
 
 
-/* FOSTER FAMILY GOES HERE */
+Create Table FosterFamily
+(
+FosterFamID int NOT NULL IDENTITY (1, 1),
+lName varchar(50),
+fName varchar(50),
+phone varchar(12),
+address varChar(100),
+email varchar(50), 
+PRIMARY KEY (FosterFamID)
+);
+
+ALTER TABLE FosterFamily
+ADD CONSTRAINT chk_phone
+CHECK(LEN(phone) >= 10);
 
 
-/* CLIENT GOES HERE */
+Create Table Client
+(
+clientID int NOT NULL IDENTITY (1, 1),
+lName varchar(50),
+fName varchar(50),
+phone varchar(12),
+address varChar(100),
+email varchar(50),
+status varchar(50),
+notes varchar(200),  
+PRIMARY KEY (clientID)
+);
+
+ALTER TABLE Client
+ADD CONSTRAINT chk_phone
+CHECK(LEN(phone) >= 10);
+
+ALTER TABLE Client
+ADD CONSTRAINT chk_status
+CHECK(status IN('Looking', 'Found'));
 
 
 CREATE TABLE VetRecord
